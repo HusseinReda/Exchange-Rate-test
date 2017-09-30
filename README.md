@@ -56,3 +56,5 @@ fifty_eur_in_usd == fifty_eur          # => true
 twenty_dollars > Money.new(5, 'USD')   # => true
 twenty_dollars < fifty_eur             # => true
 ```
+
+The gem is tested using rspec.
