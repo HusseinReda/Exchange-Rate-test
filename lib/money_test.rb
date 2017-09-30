@@ -16,15 +16,12 @@ class Money
 		@currency = currency
 	end
 
-	# Setting the different conversion rates with respect to
-	# the base currency
+	# Setting the different conversion rates with respect to the base currency
 	# == Parameters:
 	# base_currency::
-	# 	The base currency upon which the conversion rates should
-	# 	calculate, example: 'EUR', 'USD'
+	# 	The base currency upon which the conversion rates should calculate, example: 'EUR', 'USD'
 	# conversion_rates::
-	# 	A hash containing the different exchange rates' currencies
-	# 	and values with respect to the base currency, example:
+	# 	A hash containing the different exchange rates' currencies and values with respect to the base currency, example:
 	# 	{
 	# 		'USD'     => 1.11,
 	# 		'Bitcoin' => 0.0047
@@ -34,8 +31,7 @@ class Money
 		@@conversion_rates = conversion_rates
 	end
 
-	# Converting the amount in the calling object upon the currency
-	# entered, with respect to the base currency
+	# Converting the amount in the calling object upon the currency entered, with respect to the base currency
 	# == Returns:
 	# 	A money object with the new amount and currency
 	def convert_to(to_currency)
@@ -47,7 +43,7 @@ class Money
 		Money.new(converted_amount, to_currency)
 	end
 
-	# overriding arithmetic operators
+	# Overriding arithmetic operators
 	def +(other)
 		rate = Money.getRate(other.currency, self.currency)
 		new_other_amount = other.amount * rate
@@ -69,7 +65,7 @@ class Money
 	end
 	# --------------------------------
 
-	# overriding comparisons operators, to the nearest 2 decimal places
+	# Overriding comparisons operators, to the nearest 2 decimal places
 	def ==(other)
 		temp = other.convert_to(self.currency)
 		return self.amount.round(2) == temp.amount.round(2)
@@ -97,8 +93,7 @@ class Money
 	# Getting the exchange rate between 2 currencies
 	# == Returns:
 	#  	- 1 if the 2 currencies are the same
-	#  	- the required rate, even if the 2 currencies are swaped
-	#  		(return inverse the value)
+	#  	- the required rate, even if the 2 currencies are swaped (return inverse the value)
 	# == Raises:
 	# 	- RateNotFound if no rates are set for those 2 currencies
 	def self.getRate(from_currency, to_currency)
