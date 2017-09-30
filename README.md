@@ -1,7 +1,7 @@
-# MoneyTest
+# MoneyTest Gem
 Ruby gem for finding the exchange rate between 2 monetary values along with arithmetic manipulations
 
-# Configure the currency rates with respect to a base currency (here EUR):
+## Configure the currency rates with respect to a base currency (here EUR):
  
 ```
 Money.conversion_rates('EUR', {
@@ -9,13 +9,13 @@ Money.conversion_rates('EUR', {
   'Bitcoin' => 0.0047
 })
 ```
-# Instantiate money objects:
+## Instantiate money objects:
  
 ```
 fifty_eur = Money.new(50, 'EUR')
 ```
  
-# Get amount and currency:
+## Get amount and currency:
  
 ```
 fifty_eur.amount   # => 50
@@ -23,19 +23,19 @@ fifty_eur.currency # => "EUR"
 fifty_eur.inspect  # => "50.00 EUR"
 ```
  
-# Convert to a different currency (should return a Money instance, not a String):
+## Convert to a different currency (should return a Money instance, not a String):
  
 ```
 fifty_eur.convert_to('USD') # => 55.50 USD
 ```
  
-# Perform operations in different currencies:
+## Perform operations in different currencies:
  
 ```
 twenty_dollars = Money.new(20, 'USD')
 ```
  
-# Arithmetics:
+## Arithmetics:
  
 ```
 fifty_eur + twenty_dollars # => 68.02 EUR
@@ -44,7 +44,7 @@ fifty_eur / 2              # => 25 EUR
 twenty_dollars * 3         # => 60 USD
 ```
  
-# Comparisons (also in different currencies):
+## Comparisons (also in different currencies):
  
 ```
 twenty_dollars == Money.new(20, 'USD') # => true
